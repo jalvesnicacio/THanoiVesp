@@ -26,5 +26,18 @@ public class Torre {
 	public Disco topDisco(){
 		return this.discos.get(topIndex);
 	}
+	
+	public String toString(){
+		String nomeDiscos = "{ ";
+		for (Disco d : this.discos) {
+			nomeDiscos += d.getNome() + " ";
+		}
+		nomeDiscos += "}";
+		return nomeDiscos;
+	}
+	
+	
+	
+	
 
 }

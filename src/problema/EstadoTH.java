@@ -1,5 +1,7 @@
 package problema;
 
+import javax.swing.text.StyledEditorKit.BoldAction;
+
 public class EstadoTH {
 	private Torre torre1;
 	private Torre torre2;
@@ -36,6 +38,22 @@ public class EstadoTH {
 		return torre3;
 	}
 	
-	
+	public boolean equals(EstadoTH estado){
+		if (this.torre1.equals(estado.getTorre1()) &
+				this.torre2.equals(estado.getTorre2()) &
+				this.torre3.equals(estado.getTorre3())){
+			return true;
+		}
+		return false;
+	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

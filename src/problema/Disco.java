@@ -24,6 +24,12 @@ public class Disco {
 		this.diametro = diametro;
 	}
 	
+	public boolean equals(Disco disco){
+		if(this.diametro == disco.getDiametro()){
+			return true;
+		}
+		return false;
+	}
 	
 
 }

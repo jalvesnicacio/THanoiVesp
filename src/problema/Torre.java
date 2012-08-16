@@ -2,6 +2,7 @@ package problema;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class Torre {
 	private List<Disco> discos = new LinkedList<Disco>();
@@ -35,6 +36,39 @@ public class Torre {
 		nomeDiscos += "}";
 		return nomeDiscos;
 	}
+	
+	
+	
+	public List<Disco> getDiscos() {
+		return discos;
+	}
+
+	public void setDiscos(List<Disco> discos) {
+		this.discos = discos;
+	}
+
+	public boolean equals(Torre t){
+		int counter = 0;
+		ListIterator<Disco> li = this.discos.listIterator();
+		
+		if(this.discos.size() != t.getDiscos().size()){
+			return false;
+		}
+		
+		while(li.hasNext()){
+			if(li.next().equals(t.getDiscos().get(counter))){ //--> Problema: lista vazia, com get(counter) apontado para null!!!
+				counter++;
+			}else{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	
+	
+	
+	
 	
 	
 	

@@ -23,6 +23,18 @@ public class EstadoTH {
 	public String toString(){
 		return "Estado[torre1= "+torre1.toString() + ", torre2= " + torre2.toString() + ", torre3= "+ torre3.toString() + "]";
 	}
+
+	public Torre getTorre1() {
+		return torre1;
+	}
+
+	public Torre getTorre2() {
+		return torre2;
+	}
+
+	public Torre getTorre3() {
+		return torre3;
+	}
 	
 	
 

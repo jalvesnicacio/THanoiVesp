@@ -17,6 +17,12 @@ public class Teste {
 		List<No> solucao = new LinkedList<No>();
 		
 		solucao = busca.buscar(problema);
+		
+		//Para busca A*: (coloquei como um modelo de como executar com A*)
+		//TorreHanoi problema = new TorreHanoi();
+		//BuscaAEstrela busca = new BuscaAEstrela();
+		//List<no> solucao = new LinkedList<No>();
+		
 		if (solucao != null){
 			//Escrevendo na tela o caminho:
 			ListIterator<No> iteracao = solucao.listIterator();

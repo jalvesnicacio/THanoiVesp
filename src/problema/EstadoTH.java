@@ -1,7 +1,5 @@
 package problema;
 
-import javax.swing.text.StyledEditorKit.BoldAction;
-
 public class EstadoTH {
 	private Torre torre1;
 	private Torre torre2;
@@ -9,17 +7,14 @@ public class EstadoTH {
 	
 	private String nomeAcao = "";
 
-	public EstadoTH(Torre torre1, Torre torre2, Torre torre3, String nomeAcao) {
-		this.torre1 = torre1;
-		this.torre2 = torre2;
-		this.torre3 = torre3;
-		this.nomeAcao = nomeAcao;
-	}
-	
 	public EstadoTH(Torre torre1, Torre torre2, Torre torre3) {
 		this.torre1 = torre1;
 		this.torre2 = torre2;
 		this.torre3 = torre3;
+	}
+	
+	public EstadoTH(){
+		//nothing here...
 	}
 	
 	public String toString(){
@@ -38,6 +33,26 @@ public class EstadoTH {
 		return torre3;
 	}
 	
+	public String getNomeAcao(){
+		return this.nomeAcao;
+	}
+	
+	public void setNomeAcao(String s){
+		this.nomeAcao = s;
+	}
+	
+	public void setTorre1(Torre torre1) {
+		this.torre1 = torre1;
+	}
+
+	public void setTorre2(Torre torre2) {
+		this.torre2 = torre2;
+	}
+
+	public void setTorre3(Torre torre3) {
+		this.torre3 = torre3;
+	}
+
 	public boolean equals(EstadoTH estado){
 		if (this.torre1.equals(estado.getTorre1()) &
 				this.torre2.equals(estado.getTorre2()) &
@@ -47,6 +62,14 @@ public class EstadoTH {
 		return false;
 	}
 
+	
+	public EstadoTH clone(){
+		EstadoTH dest = new EstadoTH();
+		dest.setTorre1(this.torre1.clone());
+		dest.setTorre2(this.torre2.clone());
+		dest.setTorre3(this.torre3.clone());
+		return dest;
+	}
 	
 	
 	

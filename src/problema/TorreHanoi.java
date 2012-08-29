@@ -2,6 +2,7 @@ package problema;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.ListIterator;
 
 public class TorreHanoi {
 	private EstadoTH estadoi;
@@ -41,19 +42,28 @@ public class TorreHanoi {
 	public EstadoTH torre1_torre2(EstadoTH estado){
 		Disco topA = estado.getTorre1().topDisco();
 		Disco topB = estado.getTorre2().topDisco();
-		if(topA.getDiametro()<topB.getDiametro() & topA != null){
-			estado.getTorre2().adiciona(estado.getTorre1().remove());
-			return estado;
+		EstadoTH aux = estado.clone();
+		if(topA != null){
+			if(topA.menorQue(topB)){
+				aux.getTorre2().adiciona(aux.getTorre1().remove());
+				aux.setNomeAcao("move " + topA.getNome() + " da torre 1 para a torre 2");
+				return aux;
+			}
 		}
+		
 		return null;
 	}
 	
 	public EstadoTH torre1_torre3(EstadoTH estado){
 		Disco topA = estado.getTorre1().topDisco();
 		Disco topB = estado.getTorre3().topDisco();
-		if(topA.getDiametro()<topB.getDiametro() & topA != null){
-			estado.getTorre3().adiciona(estado.getTorre1().remove());
-			return estado;
+		EstadoTH aux = estado.clone();
+		if(topA != null){
+			if(topA.menorQue(topB)){
+				aux.getTorre3().adiciona(aux.getTorre1().remove());
+				aux.setNomeAcao("move " + topA.getNome() + " da torre 1 para a torre 3");
+				return aux;
+			}
 		}
 		return null;
 	}
@@ -61,9 +71,13 @@ public class TorreHanoi {
 	public EstadoTH torre2_torre1(EstadoTH estado){
 		Disco topA = estado.getTorre2().topDisco();
 		Disco topB = estado.getTorre1().topDisco();
-		if(topA.getDiametro()<topB.getDiametro() & topA != null){
-			estado.getTorre1().adiciona(estado.getTorre2().remove());
-			return estado;
+		EstadoTH aux = estado.clone();
+		if(topA != null){
+			if(topA.menorQue(topB)){
+				aux.getTorre1().adiciona(aux.getTorre2().remove());
+				aux.setNomeAcao("move " + topA.getNome() + " da torre 2 para a torre 1");
+				return aux;
+			}
 		}
 		return null;
 	}
@@ -71,9 +85,13 @@ public class TorreHanoi {
 	public EstadoTH torre2_torre3(EstadoTH estado){
 		Disco topA = estado.getTorre2().topDisco();
 		Disco topB = estado.getTorre3().topDisco();
-		if(topA.getDiametro()<topB.getDiametro() & topA != null){
-			estado.getTorre3().adiciona(estado.getTorre2().remove());
-			return estado;
+		EstadoTH aux = estado.clone();
+		if(topA != null){
+			if(topA.menorQue(topB)){
+				aux.getTorre3().adiciona(aux.getTorre2().remove());
+				aux.setNomeAcao("move " + topA.getNome() + " da torre 2 para a torre 3");
+				return aux;
+			}
 		}
 		return null;
 	}
@@ -81,9 +99,13 @@ public class TorreHanoi {
 	public EstadoTH torre3_torre1(EstadoTH estado){
 		Disco topA = estado.getTorre3().topDisco();
 		Disco topB = estado.getTorre1().topDisco();
-		if(topA.getDiametro()<topB.getDiametro() & topA != null){
-			estado.getTorre1().adiciona(estado.getTorre3().remove());
-			return estado;
+		EstadoTH aux = estado.clone();
+		if(topA != null){
+			if(topA.menorQue(topB)){
+				aux.getTorre1().adiciona(aux.getTorre3().remove());
+				aux.setNomeAcao("move " + topA.getNome() + " da torre 3 para a torre 1");
+				return aux;
+			}
 		}
 		return null;
 	}
@@ -91,15 +113,20 @@ public class TorreHanoi {
 	public EstadoTH torre3_torre2(EstadoTH estado){
 		Disco topA = estado.getTorre3().topDisco();
 		Disco topB = estado.getTorre2().topDisco();
-		if(topA.getDiametro()<topB.getDiametro() & topA != null){
-			estado.getTorre2().adiciona(estado.getTorre3().remove());
-			return estado;
+		EstadoTH aux = estado.clone();
+		if(topA != null){
+			if(topA.menorQue(topB)){
+				aux.getTorre2().adiciona(aux.getTorre3().remove());
+				aux.setNomeAcao("move " + topA.getNome() + " da torre 3 para a torre 2");
+				return aux;
+			}
 		}
 		return null;
 	}
 	
     public List<EstadoTH> sucessor(EstadoTH estado){
     	List<EstadoTH> s = new LinkedList<EstadoTH>();
+    	
     	EstadoTH e = torre1_torre2(estado);
     	if(e != null){
     		s.add(e);
@@ -130,6 +157,16 @@ public class TorreHanoi {
     		s.add(e);
     	}
     	return s;
+    }
+    
+    public String imprimeLista(List<EstadoTH> lista){
+    	ListIterator<EstadoTH> iteracao = lista.listIterator();
+    	String saida = "Lista de estados sucessores: \n";
+    	while (iteracao.hasNext()) {
+			EstadoTH estadoTH = (EstadoTH) iteracao.next();
+			saida += estadoTH.toString();
+		}
+    	return saida;
     }
 	
 

@@ -31,5 +31,13 @@ public class Disco {
 		return false;
 	}
 	
+	public boolean menorQue(Disco disco){
+		if (disco == null){
+			return true;
+		}else if(this.diametro < disco.getDiametro()){
+			return true;
+		}else return false;
+	}
+	
 
 }

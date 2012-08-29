@@ -8,6 +8,10 @@ public class Torre {
 	private List<Disco> discos = new LinkedList<Disco>();
 	private int topIndex = -1;
 	
+	public Torre() {
+		//não retorna nada.
+	}
+
 	public void adiciona(Disco disco){
 		this.discos.add(disco);
 		this.topIndex++;
@@ -25,7 +29,11 @@ public class Torre {
 	}
 	
 	public Disco topDisco(){
-		return this.discos.get(topIndex);
+		if (!this.discos.isEmpty()){
+			return this.discos.get(topIndex);
+		}
+		return null;
+		
 	}
 	
 	public String toString(){
@@ -63,6 +71,14 @@ public class Torre {
 			}
 		}
 		return true;
+	}
+	
+	public Torre clone(){
+		Torre dest = new Torre();
+		for(Disco d: this.discos){
+			dest.adiciona(d);
+		}
+		return dest;
 	}
 	
 	
